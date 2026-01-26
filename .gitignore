@@ -61,10 +61,15 @@ credentials.json
 *.pem
 .env
 .env.local
+.env.*.local
 
 # Newman (Postman CLI) Files
 newman/
 
 # Test Results
-test-results/
+test-res
+
+# Plugin Development
+plugins/
+*.zipults/
 reports/
