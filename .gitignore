@@ -1,0 +1,70 @@
+# Operating System Files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# IDE and Editor Files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.project
+.classpath
+.settings/
+
+# Postman Backup Files
+*.postman_backup
+
+# Environment Files with Sensitive Data
+# Note: We keep the example environment file in the repo
+*-PROD.postman_environment.json
+*-PRODUCTION.postman_environment.json
+*-prod.postman_environment.json
+*-production.postman_environment.json
+*.private.postman_environment.json
+
+# Logs
+*.log
+logs/
+
+# Temporary Files
+*.tmp
+*.temp
+.cache/
+
+# Documentation Build Files
+docs/_build/
+site/
+
+# Package Manager Files
+node_modules/
+package-lock.json
+yarn.lock
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.Python
+env/
+venv/
+
+# Secrets and Credentials
+secrets.json
+credentials.json
+*.key
+*.pem
+.env
+.env.local
+
+# Newman (Postman CLI) Files
+newman/
+
+# Test Results
+test-results/
+reports/
