@@ -14,6 +14,7 @@ A comprehensive Postman collection for Oracle Field Service Cloud (OFSC) REST AP
 - [Configuration](#configuration)
 - [API Categories](#api-categories)
 - [Usage Examples](#usage-examples)
+- [Plugin Development](#plugin-development)
 - [Environment Variables](#environment-variables)
 - [Contributing](#contributing)
 - [Educational Purpose](#educational-purpose)
@@ -41,6 +42,11 @@ Oracle Field Service Cloud (OFSC) is a comprehensive field service management so
 - **Detailed Descriptions** for each endpoint explaining functionality and use cases
 - **Request Examples** with sample payloads for POST/PATCH operations
 - **Basic Authentication** setup included
+- **🚀 Plugin Development Workflow** - Deploy plugins directly from VS Code
+  - One-click deployment (Cmd+Shift+B)
+  - Auto-deploy on file changes (watch mode)
+  - Newman integration for automated testing
+  - CI/CD ready scripts
 
 ## 📦 Prerequisites
 
@@ -184,7 +190,61 @@ Content-Type: application/json
 
 ### Example 3: Get Available Capacity
 
-```http
+```h� Plugin Development
+
+This repository includes a complete plugin development workflow for efficient coding and deployment!
+
+### Quick Start Plugin Development
+
+```bash
+# 1. Install dependencies
+npm install
+
+# 2. Configure your OFSC instance
+cp .env.example .env.local
+# Edit .env.local with your credentials
+
+# 3. Deploy your plugin
+npm run deploy plugins/my-plugin
+
+# 4. Or use watch mode for auto-deploy
+npm run deploy:watch plugins/my-plugin
+```
+
+### VS Code Integration
+
+**One-Click Deploy:**
+- Press `Cmd+Shift+B` (Mac) or `Ctrl+Shift+B` (Windows)
+- Select "OFSC: Package & Deploy Plugin"
+- Enter your plugin path
+- Done! ✅
+
+### Available Plugin Commands
+
+```bash
+npm run deploy <path>          # Deploy plugin once
+npm run deploy:watch <path>    # Auto-deploy on file changes
+npm run test:plugins           # Test plugin endpoints
+npm run test:report            # Generate HTML test report
+```
+
+### Documentation
+
+- **[🚀 QUICKSTART.md](QUICKSTART.md)** - Get started in 5 minutes
+- **[📖 PLUGIN_DEVELOPMENT_GUIDE.md](PLUGIN_DEVELOPMENT_GUIDE.md)** - Complete guide with examples
+- **[🔄 PLUGIN_WORKFLOW.md](PLUGIN_WORKFLOW.md)** - Workflow overview and best practices
+
+### Plugin Endpoints
+
+Located in **Metadata → Plugins**:
+
+1. **Import Plugins** - Deploy custom plugins to OFSC
+   - `POST /rest/ofscMetadata/v1/plugins/custom-actions/import`
+   
+2. **Install Standard Plugin** - Install Oracle standard plugins
+   - `POST /rest/ofscMetadata/v1/plugins/{pluginLabel}/custom-actions/install`
+
+## �ttp
 GET {{base_url}}/rest/ofscCapacity/v1/capacity?date=2026-02-01
 Authorization: Basic {{username}}:{{password}}
 ```
