@@ -22,7 +22,7 @@ A comprehensive Postman collection for Oracle Field Service Cloud (OFSC) REST AP
 
 Oracle Field Service Cloud (OFSC) is a comprehensive field service management solution. This Postman collection provides a complete reference for the OFSC REST API, covering all major functional areas.
 
-**Release:** Oracle Fusion Field Service 26D | **API Spec Version:** 2026.07.29 | **Last Updated:** October 2026
+**Release:** Oracle Field Service 26D | **API Spec Version:** 2026.07.29 | **Last Updated:** October 2026
 
 ## ✨ Features
 
