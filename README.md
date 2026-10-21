@@ -11,14 +11,14 @@ Production-aligned Postman collection providing 100% complete coverage (253 offi
 
 ## Downloads
 
-[![Download Collection](https://img.shields.io/badge/Download-Postman_Collection-FF6C37?style=for-the-badge&logo=postman&logoColor=white)](https://raw.githubusercontent.com/saikumargudelly/ofsc-api-collection/main/api.postman_collection.json)
-[![Download Environment](https://img.shields.io/badge/Download-Environment_Template-007ACC?style=for-the-badge&logo=postman&logoColor=white)](https://raw.githubusercontent.com/saikumargudelly/ofsc-api-collection/main/test.postman_environment.json)
+[![Download Collection](https://img.shields.io/badge/Download-Postman_Collection-FF6C37?style=for-the-badge&logo=postman&logoColor=white)](https://github.com/saikumargudelly/ofsc-api-collection/releases/latest/download/api.postman_collection.json)
+[![Download Environment](https://img.shields.io/badge/Download-Environment_Template-007ACC?style=for-the-badge&logo=postman&logoColor=white)](https://github.com/saikumargudelly/ofsc-api-collection/releases/latest/download/test.postman_environment.json)
 
 ---
 
 ## Quick Start
 
-1. **Import:** Download and import [`api.postman_collection.json`](https://raw.githubusercontent.com/saikumargudelly/ofsc-api-collection/main/api.postman_collection.json) and [`test.postman_environment.json`](https://raw.githubusercontent.com/saikumargudelly/ofsc-api-collection/main/test.postman_environment.json) into Postman.
+1. **Import:** Download [`api.postman_collection.json`](https://github.com/saikumargudelly/ofsc-api-collection/releases/latest/download/api.postman_collection.json) and [`test.postman_environment.json`](https://github.com/saikumargudelly/ofsc-api-collection/releases/latest/download/test.postman_environment.json), then import both into Postman.
 2. **Select Environment:** Choose `OFSC Basic Environment -TEST`.
 3. **Configure Credentials:**
 
