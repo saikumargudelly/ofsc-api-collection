@@ -80,6 +80,27 @@
                 "description": "Displays a booking grid showing available time slots with capacity and quota information. This endpoint helps visualize booking availability across time periods and workzones, making it easier to find suitable appointment windows for scheduling activities."
               },
               "response": []
+            },
+            {
+              "name": "Booking Fields Dependencies",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{base_url}}/rest/ofscCapacity/v1/bookingFieldsDependencies",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "rest",
+                    "ofscCapacity",
+                    "v1",
+                    "bookingFieldsDependencies"
+                  ]
+                },
+                "description": "The function provides a list of fields and properties required by showBookingGrid API function to determine parameters of activity that is going to be booked."
+              },
+              "response": []
             }
           ]
         },
@@ -806,6 +827,65 @@
                     "description": "Uploads or updates a file property for an activity. Use this to attach documents, photos, customer signatures, or other files to service activities for documentation and compliance purposes."
                   },
                   "response": []
+                },
+                {
+                  "name": "Get external files info",
+                  "request": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{base_url}}/api/field-service/core/v1/activities/{activityId}/externalFilesInfo/{propertyLabel}",
+                      "host": [
+                        "{{base_url}}"
+                      ],
+                      "path": [
+                        "api",
+                        "field-service",
+                        "core",
+                        "v1",
+                        "activities",
+                        "{activityId}",
+                        "externalFilesInfo",
+                        "{propertyLabel}"
+                      ]
+                    },
+                    "description": "This operation returns information about external files from the specified activity property. The property should have the type 'Attachments' configured with the 'OCI Object Storage' storage type."
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Replace file links",
+                  "request": {
+                    "method": "PUT",
+                    "header": [],
+                    "url": {
+                      "raw": "{{base_url}}/api/field-service/core/v1/activities/{activityId}/externalFilesInfo/{propertyLabel}",
+                      "host": [
+                        "{{base_url}}"
+                      ],
+                      "path": [
+                        "api",
+                        "field-service",
+                        "core",
+                        "v1",
+                        "activities",
+                        "{activityId}",
+                        "externalFilesInfo",
+                        "{propertyLabel}"
+                      ]
+                    },
+                    "description": "This operation uploads information about external links to file attachments to the specified activity property.",
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"operationType\": \"replace\",\n  \"items\": [\n    {\n      \"fileName\": \"site_photo.jpg\",\n      \"contentType\": \"image/jpeg\",\n      \"externalUrl\": \"https://objectstorage.us-phoenix-1.oraclecloud.com/n/test/b/bucket/o/site_photo.jpg\"\n    }\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    }
+                  },
+                  "response": []
                 }
               ]
             },
@@ -1249,11 +1329,12 @@
                   }
                 },
                 "url": {
-                  "raw": "{{base_url}}/ofscCore/v1/activities/custom-actions/bulkUpdate",
+                  "raw": "{{base_url}}/rest/ofscCore/v1/activities/custom-actions/bulkUpdate",
                   "host": [
                     "{{base_url}}"
                   ],
                   "path": [
+                    "rest",
                     "ofscCore",
                     "v1",
                     "activities",
@@ -2148,30 +2229,60 @@
               "response": []
             },
             {
-              "name": "https://eghd-dev.test.fs.ocs.oraclecloud.com/rest/rest/ofscCore/v1/activities/3298/requiredInventories",
+              "name": "Get external files info",
               "request": {
                 "method": "GET",
                 "header": [],
                 "url": {
-                  "raw": "https://eghd-dev.test.fs.ocs.oraclecloud.com/rest/rest/ofscCore/v1/activities/3298/requiredInventories",
-                  "protocol": "https",
+                  "raw": "{{base_url}}/api/field-service/core/v1/inventories/{inventoryId}/externalFilesInfo/{propertyLabel}",
                   "host": [
-                    "eghd-dev",
-                    "test",
-                    "fs",
-                    "ocs",
-                    "oraclecloud",
-                    "com"
+                    "{{base_url}}"
                   ],
                   "path": [
-                    "rest",
-                    "rest",
-                    "ofscCore",
+                    "api",
+                    "field-service",
+                    "core",
                     "v1",
-                    "activities",
-                    "3298",
-                    "requiredInventories"
+                    "inventories",
+                    "{inventoryId}",
+                    "externalFilesInfo",
+                    "{propertyLabel}"
                   ]
+                },
+                "description": "This operation returns information about external files from the specified inventory property. The property should have the type 'Attachments' configured with the 'OCI Object Storage' storage type."
+              },
+              "response": []
+            },
+            {
+              "name": "Replace file links",
+              "request": {
+                "method": "PUT",
+                "header": [],
+                "url": {
+                  "raw": "{{base_url}}/api/field-service/core/v1/inventories/{inventoryId}/externalFilesInfo/{propertyLabel}",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "field-service",
+                    "core",
+                    "v1",
+                    "inventories",
+                    "{inventoryId}",
+                    "externalFilesInfo",
+                    "{propertyLabel}"
+                  ]
+                },
+                "description": "This operation uploads information about external links to file attachments to the specified inventory property.",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"operationType\": \"replace\",\n  \"items\": [\n    {\n      \"fileName\": \"part_schematic.pdf\",\n      \"contentType\": \"application/pdf\",\n      \"externalUrl\": \"https://objectstorage.us-phoenix-1.oraclecloud.com/n/test/b/bucket/o/part_schematic.pdf\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
                 }
               },
               "response": []
@@ -3868,7 +3979,7 @@
                       "  <p>Total matched: <b>{{count}}</b></p>\r",
                       "  <ul>\r",
                       "    {{#each list}}\r",
-                      "      <li><b>{{label}}</b> — {{name}} (active: {{active}})</li>\r",
+                      "      <li><b>{{label}}</b> \u2014 {{name}} (active: {{active}})</li>\r",
                       "    {{/each}}\r",
                       "  </ul>\r",
                       "`;\r",
@@ -3967,7 +4078,7 @@
                       "  <p>Total matched: <b>{{count}}</b></p>\r",
                       "  <ul>\r",
                       "    {{#each list}}\r",
-                      "      <li><b>{{label}}</b> — {{name}} (active: {{active}})</li>\r",
+                      "      <li><b>{{label}}</b> \u2014 {{name}} (active: {{active}})</li>\r",
                       "    {{/each}}\r",
                       "  </ul>\r",
                       "`;\r",
@@ -5313,6 +5424,146 @@
                 }
               },
               "response": []
+            },
+            {
+              "name": "Get buckets associated with routing profile",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{base_url}}/api/field-service/routing/v1/routingProfiles/{{profileLabel}}/buckets",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "field-service",
+                    "routing",
+                    "v1",
+                    "routingProfiles",
+                    "{{profileLabel}}",
+                    "buckets"
+                  ],
+                  "query": [
+                    {
+                      "key": "offset",
+                      "value": "0",
+                      "disabled": true
+                    },
+                    {
+                      "key": "limit",
+                      "value": "100",
+                      "disabled": true
+                    }
+                  ]
+                },
+                "description": "This operation retrieves the list of buckets associated with the specified routing profile label."
+              },
+              "response": []
+            },
+            {
+              "name": "Add a routing plan (v2)",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "url": {
+                  "raw": "{{base_url}}/api/field-service/routing/v2/routingProfiles/{{profileLabel}}/plans/custom-actions/import",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "field-service",
+                    "routing",
+                    "v2",
+                    "routingProfiles",
+                    "{{profileLabel}}",
+                    "plans",
+                    "custom-actions",
+                    "import"
+                  ]
+                },
+                "description": "This operation imports a routing plan for the specified routing profile using the v2 API schema.",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"scheduling_plan\": {\n    \"name\": \"Default Routing Plan v2\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Force add a routing plan (v2)",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "url": {
+                  "raw": "{{base_url}}/api/field-service/routing/v2/routingProfiles/{{profileLabel}}/plans/custom-actions/forceImport",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "field-service",
+                    "routing",
+                    "v2",
+                    "routingProfiles",
+                    "{{profileLabel}}",
+                    "plans",
+                    "custom-actions",
+                    "forceImport"
+                  ]
+                },
+                "description": "This operation upserts a routing plan for the specified routing profile. If the plan already exists, it is overwritten.",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"scheduling_plan\": {\n    \"name\": \"Default Routing Plan v2 (Forced)\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Get a routing plan (v2)",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "url": {
+                  "raw": "{{base_url}}/api/field-service/routing/v2/routingProfiles/{{profileLabel}}/plans/{{planLabel}}/custom-actions/export",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "field-service",
+                    "routing",
+                    "v2",
+                    "routingProfiles",
+                    "{{profileLabel}}",
+                    "plans",
+                    "{{planLabel}}",
+                    "custom-actions",
+                    "export"
+                  ],
+                  "query": [
+                    {
+                      "key": "download",
+                      "value": "false",
+                      "disabled": false
+                    }
+                  ]
+                },
+                "description": "This operation exports the specified routing plan for the specified routing profile in JSON format."
+              },
+              "response": []
             }
           ]
         },
@@ -5674,12 +5925,12 @@
                           "\r",
                           "// Human-friendly message in the Postman console\r",
                           "if (pm.response.code === 204) {\r",
-                          "  console.log(\"✅ Work Zones bulk update: Succeeded (HTTP 204 No Content)\");\r",
+                          "  console.log(\"\u2705 Work Zones bulk update: Succeeded (HTTP 204 No Content)\");\r",
                           "} else {\r",
                           "  // If API returned an error body, print it\r",
                           "  let err;\r",
                           "  try { err = pm.response.json(); } catch (e) { err = pm.response.text(); }\r",
-                          "  console.error(\"❌ Work Zones bulk update: Failed\", {\r",
+                          "  console.error(\"\u274c Work Zones bulk update: Failed\", {\r",
                           "    status: pm.response.code,\r",
                           "    body: err\r",
                           "  });\r",
@@ -5865,6 +6116,398 @@
               ]
             }
           ]
+        },
+        {
+          "name": "Activity Type Groups",
+          "item": [
+            {
+              "name": "Get activity type groups",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{base_url}}/rest/ofscMetadata/v1/activityTypeGroups",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "rest",
+                    "ofscMetadata",
+                    "v1",
+                    "activityTypeGroups"
+                  ],
+                  "query": [
+                    {
+                      "key": "offset",
+                      "value": "0",
+                      "disabled": true
+                    },
+                    {
+                      "key": "limit",
+                      "value": "100",
+                      "disabled": true
+                    }
+                  ]
+                },
+                "description": "This operation retrieves a collection of activity type groups."
+              },
+              "response": []
+            },
+            {
+              "name": "Get an activity type group",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{base_url}}/rest/ofscMetadata/v1/activityTypeGroups/{label}",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "rest",
+                    "ofscMetadata",
+                    "v1",
+                    "activityTypeGroups",
+                    "{label}"
+                  ]
+                },
+                "description": "This operation retrieves the details of the specified activity type group."
+              },
+              "response": []
+            },
+            {
+              "name": "Create or replace an activity type group",
+              "request": {
+                "method": "PUT",
+                "header": [],
+                "url": {
+                  "raw": "{{base_url}}/rest/ofscMetadata/v1/activityTypeGroups/{label}",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "rest",
+                    "ofscMetadata",
+                    "v1",
+                    "activityTypeGroups",
+                    "{label}"
+                  ]
+                },
+                "description": "This operation creates an activity type group resource or updates an existing one.",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"label\": \"CUSTOMER_SERVICE\",\n  \"translations\": [\n    {\n      \"language\": \"en\",\n      \"name\": \"Customer Service Activities\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Link Templates",
+          "item": [
+            {
+              "name": "Get link templates",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{base_url}}/rest/ofscMetadata/v1/linkTemplates",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "rest",
+                    "ofscMetadata",
+                    "v1",
+                    "linkTemplates"
+                  ],
+                  "query": [
+                    {
+                      "key": "offset",
+                      "value": "0",
+                      "disabled": true
+                    },
+                    {
+                      "key": "limit",
+                      "value": "100",
+                      "disabled": true
+                    }
+                  ]
+                },
+                "description": "This operation retrieves a collection of link templates along with all the information about each link template."
+              },
+              "response": []
+            },
+            {
+              "name": "Get a link template",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{base_url}}/rest/ofscMetadata/v1/linkTemplates/{label}",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "rest",
+                    "ofscMetadata",
+                    "v1",
+                    "linkTemplates",
+                    "{label}"
+                  ]
+                },
+                "description": "This operation retrieves the details of the specified link template."
+              },
+              "response": []
+            },
+            {
+              "name": "Create a link template",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "url": {
+                  "raw": "{{base_url}}/rest/ofscMetadata/v1/linkTemplates/{label}",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "rest",
+                    "ofscMetadata",
+                    "v1",
+                    "linkTemplates",
+                    "{label}"
+                  ]
+                },
+                "description": "This operation creates a new link template.",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"label\": \"FINISH_TO_START\",\n  \"reverseLabel\": \"START_TO_FINISH\",\n  \"linkType\": \"finish_to_start\",\n  \"active\": true,\n  \"minInterval\": \"0\",\n  \"maxInterval\": \"60\",\n  \"schedulingConstraint\": \"same_day\",\n  \"assignmentConstraint\": \"same_resource\",\n  \"translations\": [\n    {\n      \"language\": \"en\",\n      \"name\": \"Finish to Start Dependency\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Update a link template",
+              "request": {
+                "method": "PATCH",
+                "header": [],
+                "url": {
+                  "raw": "{{base_url}}/rest/ofscMetadata/v1/linkTemplates/{label}",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "rest",
+                    "ofscMetadata",
+                    "v1",
+                    "linkTemplates",
+                    "{label}"
+                  ]
+                },
+                "description": "This operation updates an existing link template.",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"active\": true,\n  \"maxInterval\": \"120\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Shifts",
+          "item": [
+            {
+              "name": "Get shifts",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{base_url}}/rest/ofscMetadata/v1/shifts",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "rest",
+                    "ofscMetadata",
+                    "v1",
+                    "shifts"
+                  ],
+                  "query": [
+                    {
+                      "key": "offset",
+                      "value": "0",
+                      "disabled": true
+                    },
+                    {
+                      "key": "limit",
+                      "value": "100",
+                      "disabled": true
+                    }
+                  ]
+                },
+                "description": "This operation retrieves a collection of shifts along with all the information about each shift."
+              },
+              "response": []
+            },
+            {
+              "name": "Get a shift",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{base_url}}/rest/ofscMetadata/v1/shifts/{label}",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "rest",
+                    "ofscMetadata",
+                    "v1",
+                    "shifts",
+                    "{label}"
+                  ]
+                },
+                "description": "This operation retrieves the details of the specified shift."
+              },
+              "response": []
+            },
+            {
+              "name": "Create or update a shift",
+              "request": {
+                "method": "PUT",
+                "header": [],
+                "url": {
+                  "raw": "{{base_url}}/rest/ofscMetadata/v1/shifts/{label}",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "rest",
+                    "ofscMetadata",
+                    "v1",
+                    "shifts",
+                    "{label}"
+                  ]
+                },
+                "description": "This operation creates a new shift or updates an existing shift.",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Standard Day Shift\",\n  \"active\": true,\n  \"type\": \"regular\",\n  \"workTimeStart\": \"08:00:00\",\n  \"workTimeEnd\": \"17:00:00\",\n  \"points\": 100\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Delete a shift",
+              "request": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "{{base_url}}/rest/ofscMetadata/v1/shifts/{label}",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "rest",
+                    "ofscMetadata",
+                    "v1",
+                    "shifts",
+                    "{label}"
+                  ]
+                },
+                "description": "This operation deletes the specified shift."
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Routing Runs",
+          "item": [
+            {
+              "name": "Get list of routing runs by date",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{base_url}}/api/field-service/routing/v1/routingRuns/{{resourceExternalId}}/{{date}}",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "field-service",
+                    "routing",
+                    "v1",
+                    "routingRuns",
+                    "{{resourceExternalId}}",
+                    "{{date}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "offset",
+                      "value": "0",
+                      "disabled": true
+                    },
+                    {
+                      "key": "limit",
+                      "value": "100",
+                      "disabled": true
+                    }
+                  ]
+                },
+                "description": "This operation retrieves a list of routing runs and key statistics for the specified resource and date."
+              },
+              "response": []
+            },
+            {
+              "name": "Get routing run report",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{base_url}}/api/field-service/routing/v1/routingRuns/{{runId}}/custom-actions/report",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "field-service",
+                    "routing",
+                    "v1",
+                    "routingRuns",
+                    "{{runId}}",
+                    "custom-actions",
+                    "report"
+                  ]
+                },
+                "description": "This operation retrieves a summary report and detailed per-activity assignment metrics for the specified routing run."
+              },
+              "response": []
+            }
+          ]
         }
       ]
     },
@@ -6004,28 +6647,6 @@
                 "{{catalog}}",
                 "{{language}}",
                 "{{itemLabel}}"
-              ]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "Remove a catalog item Copy",
-          "request": {
-            "method": "DELETE",
-            "header": [],
-            "url": {
-              "raw": "{{base_url}}/rest/ofscPartsCatalog/v1/catalogs/{{catalog}}/{{language}}",
-              "host": [
-                "{{base_url}}"
-              ],
-              "path": [
-                "rest",
-                "ofscPartsCatalog",
-                "v1",
-                "catalogs",
-                "{{catalog}}",
-                "{{language}}"
               ]
             }
           },
