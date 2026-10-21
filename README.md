@@ -47,6 +47,12 @@ Production-aligned Postman collection providing 100% complete coverage (253 offi
 
 ---
 
+## Plugin Framework
+
+For developing, scaffolding, and deploying custom plugins, refer to the [Oracle Field Service Plugin Template](https://github.com/saikumargudelly/oracle-field-service-plugin-template).
+
+---
+
 ## License & Disclaimer
 
 This project is licensed under the MIT License. Oracle and Oracle Field Service are registered trademarks of Oracle Corporation. This repository is an independent community resource and is not affiliated with or endorsed by Oracle.
